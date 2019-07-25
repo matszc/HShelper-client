@@ -1,0 +1,26 @@
+<span *ngIf="loading && !errorLoadCards">Loading...</span>
+<span class="error" *ngIf="errorLoadCards">Failed to load resources</span>
+<div class="conteinter">
+  <div *ngIf="!loading && !errorLoadCards" class="form-group">
+    <label for="deck">Decode deckstring</label>
+    <textarea class="form-control " id="deck" placeholder="Enter deckstring" [(ngModel)]="deckString"></textarea>
+    <button  type="button" class="btn btn-primary mb-2" (click)="checkString()">Decode</button>
+  </div>
+  <div *ngIf="deckToPresent">
+    <div class="card bg-light mb-3">
+      <div class="card-header">Class: {{deckToPresent.hero}}</div>
+      <div class="card-body">
+        <div class="card-text">
+          <div *ngFor="let card of deckToPresent.cards" class="single-card">
+            <div class="card-rarity pentagon {{card[0].rarity}}">
+            </div>
+            <div class="card-name">
+              {{card[0].name}} ({{card[0].cost}}), x{{card[1]}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorDuringDecoding"><span class="error">Something's wrong with your deck code</span></div>
+</div>
