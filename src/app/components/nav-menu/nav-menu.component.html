@@ -1,1 +1,27 @@
-<p>nav-menu works!</p>
+<nav class="navbar-dark bg-dark">
+  <div class="navbar-header">
+    <a class='navbar-brand' [routerLink]='["/"]'>HShelper</a>
+  </div>
+  <ul class="nav navbar-nav" id="navbarSupportedContent">
+    <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+      <a  class="nav-link" [routerLink]='["/"]'>
+         Home
+      </a>
+    </li>
+    <li class="nav-item" [routerLinkActive]='["link-active"]'>
+      <a class="nav-link" [routerLink]='["/decode"]'>
+        Decode deckstring
+      </a>
+    </li>
+    <li class="nav-item" [routerLinkActive]='["link-active"]'>
+      <a class="nav-link" [routerLink]='["/join"]'>
+        Join lobby
+      </a>
+    </li>
+    <li class="nav-item" [routerLinkActive]='["link-active"]'>
+      <a class="nav-link" [routerLink]='["/create"]'>
+        Create lobby
+      </a>
+    </li>
+  </ul>
+</nav>
