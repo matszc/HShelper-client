@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-
-  constructor() { }
+  isExpanded = false;
+  width: number;
+  constructor() {
+    this.width = window.innerWidth;
+  }
 
   ngOnInit() {
+  }
+  onResize(event) {
+    this.width = event.target.innerWidth;
+  }
+
+  toggle() {
+    this.isExpanded = !this.isExpanded;
   }
 
 }

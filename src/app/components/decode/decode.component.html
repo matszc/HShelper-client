@@ -10,8 +10,8 @@
     <div class="card bg-light mb-3">
       <div class="card-header">Class: {{deckToPresent.hero}}</div>
       <div class="card-body">
-        <div class="card-text">
-          <div *ngFor="let card of deckToPresent.cards" class="single-card">
+        <div class="card-text text-center">
+          <div *ngFor="let card of deckToPresent.card" class="single-card">
             <div class="card-rarity pentagon {{card[0].rarity}}">
             </div>
             <div class="card-name">
