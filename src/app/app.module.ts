@@ -9,7 +9,9 @@ import { JoinLobbyComponent } from './components/join-lobby/join-lobby.component
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BtagComponent } from './components/home/btag/btag.component';
+import { CreateFormComponent } from './components/create-lobby/create-form/create-form.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,15 @@ import {FormsModule} from '@angular/forms';
     DecodeComponent,
     HomeComponent,
     JoinLobbyComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    BtagComponent,
+    CreateFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'decode', component: DecodeComponent },
