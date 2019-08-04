@@ -1,0 +1,12 @@
+<form *ngIf="!loading" class="picks-wrapper row" [formGroup]="picksForm" (ngSubmit)="onSubmit()" (change)="checkForm()">
+    <div *ngFor="let hero of heroes" class="col-md-4 hero">
+      <label for="{{hero.name}}" class="card icon">
+      <input type="checkbox" id="{{hero.name}}" value="{{hero.name}}" formControlName="{{hero.name}}">
+          <div class="card-body">
+            <img class="image" [alt]="hero.name" [src]=hero.url />
+            <span>{{hero.name}}</span>
+          </div>
+      </label>
+    </div>
+  <button type="submit" class="btn btn-lg btn-primary m-auto" [disabled]="picksForm.invalid">Submit</button>
+</form>

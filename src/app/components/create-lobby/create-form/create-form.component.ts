@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder, ValidatorFn} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 import {ConfigLobby, ConfigLobbyData} from '../../../Models/configLobby';
 import {LobbyService} from '../../../services/lobby.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-form',
@@ -26,7 +27,7 @@ export class CreateFormComponent implements OnInit {
     return validator;
   }
   @Input('config') config: ConfigLobby;
-  constructor(private formBuilder: FormBuilder, private lobbyService: LobbyService) {
+  constructor(private formBuilder: FormBuilder, private lobbyService: LobbyService, private router: Router) {
     this.loading = false;
     this.formats = ['Conquest', 'Specialist'];
     this.picks = [1, 2, 3, 4, 5, 6, 7 , 8 , 9];
@@ -49,6 +50,7 @@ export class CreateFormComponent implements OnInit {
     if (this.lobbyForm.invalid) {
       return false;
     }
+    // TODO add css preloader
     this.loading = true;
     const btag = localStorage.getItem('btag');
     this.config.type = formatFormControl.value;
@@ -61,7 +63,10 @@ export class CreateFormComponent implements OnInit {
       player: btag
     };
     this.lobbyService.createLobby(result).subscribe(res => {
-      console.log(res);
+      // console.log(res);
+      // @ts-ignore
+      const {id} = res;
+      this.router.navigate(['/join/' + id]);
     }, res => this.loading = false);
   }
   adjustToFormatType() {
