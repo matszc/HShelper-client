@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        <label for="picksSelect">Picks</label>
+        <label for="picksSelect">PicksComponent</label>
         <select class="form-control" id="picksSelect" formControlName="pickFormControl">
           <option *ngFor="let pick of picks" value="{{pick}}">{{pick}}</option>
         </select>
@@ -28,7 +28,7 @@
         </select>
       </div>
       <div class="col-md-12 text-center">
-        <small *ngIf="lobbyForm.invalid" class="error">Picks must be higher then bans</small>
+        <small *ngIf="lobbyForm.invalid" class="error">PicksComponent must be higher then bans</small>
       </div>
       <div class="col-md-12 text-center d-block">
         <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading">Create</button>

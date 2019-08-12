@@ -12,7 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BtagComponent } from './components/home/btag/btag.component';
 import { CreateFormComponent } from './components/create-lobby/create-form/create-form.component';
-import { LobbyComponent } from './components/lobby/lobby.component';
+import { PicksComponent } from './components/join-lobby/picks/picks.component';
+import { BansComponent } from './components/join-lobby/bans/bans.component';
+import { SummaryComponent } from './components/join-lobby/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LobbyComponent } from './components/lobby/lobby.component';
     NavMenuComponent,
     BtagComponent,
     CreateFormComponent,
-    LobbyComponent
+    PicksComponent,
+    BansComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,7 @@ import { LobbyComponent } from './components/lobby/lobby.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'decode', component: DecodeComponent },
       { path: 'join', component: JoinLobbyComponent},
-      { path: 'join/:id', component: LobbyComponent},
+      { path: 'join/:id', component: PicksComponent},
       { path: 'create', component: CreateLobbyComponent }
     ])
   ],

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {LobbyService} from '../../services/lobby.service';
-import {Lobby} from '../../Models/lobby';
+import {LobbyService} from '../../../services/lobby.service';
+import {Lobby} from '../../../Models/lobby';
 import {FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 
 @Component({
   selector: 'app-lobby',
-  templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.scss']
+  templateUrl: './picks.component.html',
+  styleUrls: ['./picks.component.scss']
 })
 // TODO style checkbox and loader add css for disabled
-export class LobbyComponent implements OnInit {
+export class PicksComponent implements OnInit {
   private picksForm: FormGroup;
   private lobbyId: string;
   private lobby: Lobby;
@@ -88,7 +88,7 @@ export class LobbyComponent implements OnInit {
       Hunter: new FormControl(false),
       Warlock: new FormControl(false),
       Shaman: new FormControl(false),
-    }, {validator: LobbyComponent.picksValidator(this.lobby.config.picks)});
+    }, {validator: PicksComponent.picksValidator(this.lobby.config.picks)});
   }
   onSubmit() {
     console.log(this.picksForm);
