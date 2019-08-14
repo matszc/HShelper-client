@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {LobbyService} from '../../../services/lobby.service';
 import {Lobby} from '../../../Models/lobby';
 import {FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 
 @Component({
-  selector: 'app-lobby',
+  selector: 'app-picks',
   templateUrl: './picks.component.html',
   styleUrls: ['./picks.component.scss']
 })
 // TODO style checkbox and loader add css for disabled
 export class PicksComponent implements OnInit {
   private picksForm: FormGroup;
-  private lobbyId: string;
-  private lobby: Lobby;
+  @Input() lobby: Lobby;
+  @Output() pickEvent = new EventEmitter<string[]>();
   private heroes;
-  private loading;
   private static picksValidator(maxPicks: number) {
     const validator: ValidatorFn = (fg: FormGroup) => {
       let picks = 0;
@@ -29,8 +28,7 @@ export class PicksComponent implements OnInit {
     };
     return validator;
   }
-  constructor(private route: ActivatedRoute, private lobbyService: LobbyService, private formBuilder: FormBuilder) {
-    this.loading = true;
+  constructor(private lobbyService: LobbyService, private formBuilder: FormBuilder) {
     // tslint:disable-next-line:max-line-length
     this.heroes = [{name: 'Warrior', url: 'https://firebasestorage.googleapis.com/v0/b/hshelper-51abd.appspot.com/o/classIcons%2Fwarrior.webp?alt=media&token=d453878e-1e86-4090-853d-1bdf100216f2'},
       // tslint:disable-next-line:max-line-length
@@ -52,15 +50,7 @@ export class PicksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.lobbyId = params.id;
-    });
-    this.lobbyService.getLobby(this.lobbyId).subscribe(res => {
-      console.log(res);
-      this.lobby = res;
-      this.loading = false;
-      this.createForm();
-    }, () => this.loading = false);
+    this.createForm();
   }
   checkForm() {
     let picks = 0;
@@ -91,7 +81,7 @@ export class PicksComponent implements OnInit {
     }, {validator: PicksComponent.picksValidator(this.lobby.config.picks)});
   }
   onSubmit() {
-    console.log(this.picksForm);
+   this.pickEvent.emit(Object.keys(this.picksForm.value));
   }
 
 }

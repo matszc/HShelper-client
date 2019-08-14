@@ -4,7 +4,12 @@ export interface Lobby {
   config: ConfigLobby;
   creationDate: Date;
   id: string;
-  players: string[];
+  players: Player[];
   status: string;
   _id: string;
+}
+export interface Player {
+  btag: string;
+  picks: string[];
+  bans: string[];
 }

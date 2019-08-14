@@ -39,7 +39,7 @@ import { SummaryComponent } from './components/join-lobby/summary/summary.compon
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'decode', component: DecodeComponent },
       { path: 'join', component: JoinLobbyComponent},
-      { path: 'join/:id', component: PicksComponent},
+      { path: 'join/:id', component: JoinLobbyComponent},
       { path: 'create', component: CreateLobbyComponent }
     ])
   ],
