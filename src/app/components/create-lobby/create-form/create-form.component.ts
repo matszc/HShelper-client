@@ -16,6 +16,7 @@ export class CreateFormComponent implements OnInit {
   picks: number[];
   bans: number[];
   loading: boolean;
+  @Input() config: ConfigLobby;
   private static picksAndBansValidator() {
     const validator: ValidatorFn = (fg: FormGroup) => {
       const bans = fg.get('bansFormControl').value;
@@ -26,7 +27,6 @@ export class CreateFormComponent implements OnInit {
     };
     return validator;
   }
-  @Input('config') config: ConfigLobby;
   constructor(private formBuilder: FormBuilder, private lobbyService: LobbyService, private router: Router) {
     this.loading = false;
     this.formats = ['Conquest', 'Specialist'];
@@ -52,6 +52,9 @@ export class CreateFormComponent implements OnInit {
     }
     // TODO add css preloader
     this.loading = true;
+    if (!localStorage.getItem('btag')) {
+      localStorage.setItem('btag', 'unknown');
+    }
     const btag = localStorage.getItem('btag');
     this.config.type = formatFormControl.value;
     this.config.openDecklist = openDecklistFormControl.value;
@@ -67,7 +70,7 @@ export class CreateFormComponent implements OnInit {
       // @ts-ignore
       const {id} = res;
       this.router.navigate(['/join/' + id]);
-    }, res => this.loading = false);
+    }, () => this.loading = false);
   }
   adjustToFormatType() {
     const {formatFormControl, openDecklistFormControl, pickFormControl, bansFormControl} = this.lobbyForm.controls;

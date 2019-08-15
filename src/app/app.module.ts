@@ -15,6 +15,10 @@ import { CreateFormComponent } from './components/create-lobby/create-form/creat
 import { PicksComponent } from './components/join-lobby/picks/picks.component';
 import { BansComponent } from './components/join-lobby/bans/bans.component';
 import { SummaryComponent } from './components/join-lobby/summary/summary.component';
+import { HeroInputComponent } from './components/join-lobby/hero-input/hero-input.component';
+import { NickComponent } from './components/join-lobby/nick/nick.component';
+import { PlayerSummaryComponent } from './components/join-lobby/summary/player-summary/player-summary.component';
+import { LoaderComponent } from './components/home/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { SummaryComponent } from './components/join-lobby/summary/summary.compon
     CreateFormComponent,
     PicksComponent,
     BansComponent,
-    SummaryComponent
+    SummaryComponent,
+    HeroInputComponent,
+    NickComponent,
+    PlayerSummaryComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

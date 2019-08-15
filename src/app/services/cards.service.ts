@@ -10,6 +10,6 @@ export class CardsService {
 
   constructor(private httpClinet: HttpClient) { }
   public getCards(): Observable<Array<any>> {
-    return this.httpClinet.get<Array<any>>(`${GLOBAL.URL}/cards`);
+    return this.httpClinet.get<Array<any>>(`${GLOBAL.URL}/api/cards`);
   }
 }

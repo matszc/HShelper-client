@@ -1,0 +1,21 @@
+<div class="m-auto b-tag-form">
+  <ng-container *ngIf="!isBtagSet">
+    <div class="form-group-1">
+      <input type="text" class="form-control" id="btag" (keypress)="checkIfEnterPressed($event)" placeholder="Enter your battle tag" [(ngModel)]="btag" >
+      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="saveBtag" [(ngModel)]="isChecked">
+      <label class="form-check-label" for="saveBtag">Remember me</label>
+    </div>
+  </ng-container>
+  <div *ngIf="isBtagSet" class="text-center btag">
+    <h2>Hello, {{btag}}</h2>
+    <h5>Wait for your opponent</h5>
+    <div class="form-group d-flex align-items-center">
+      <label for="link" class="w-25">Shere this url</label>
+      <input type="text" class="form-control w-50" id="link" #userinput value="{{link}}">
+      <button type="button" class="btn btn-primary" (click)="copy(userinput)">Copy</button>
+    </div>
+  </div>
+</div>

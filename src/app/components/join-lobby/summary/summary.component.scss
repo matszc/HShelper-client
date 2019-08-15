@@ -1,0 +1,11 @@
+.wrapper{
+  width: 60%;
+  margin:auto;
+  padding-top: 5vh;
+}
+@media (max-width: 500px) {
+  .wrapper{
+    display: block !important;
+  }
+
+}

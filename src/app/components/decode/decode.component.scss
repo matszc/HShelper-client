@@ -26,7 +26,8 @@ textarea{
 }
 button{
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 0 !important;
+  height: 34px;
 }
 .pentagon{
   width:10px;

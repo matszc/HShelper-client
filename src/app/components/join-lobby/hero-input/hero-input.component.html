@@ -1,0 +1,7 @@
+<label [formGroup]="parentForm" for="{{heroToDisplay.name}}" class="card icon">
+  <input type="checkbox" id="{{heroToDisplay.name}}" value="{{heroToDisplay.name}}" formControlName="{{heroToDisplay.name}}">
+  <div class="card-body">
+    <img class="image" [alt]="heroToDisplay.name" [src]=heroToDisplay.url />
+    <span>{{heroToDisplay.name}}</span>
+  </div>
+</label>

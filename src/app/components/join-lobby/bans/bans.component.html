@@ -1,1 +1,9 @@
-<p>bans works!</p>
+<form class="picks-wrapper row" [formGroup]="bansForm" (ngSubmit)="onSubmit()" (change)="checkForm()">
+  <div *ngFor="let hero of heroes" class="col-md-4 hero">
+    <app-hero-input [heroToDisplay]="hero" [parentForm]="bansForm"></app-hero-input>
+  </div>
+</form>
+<div class="row col-md-12 m-auto">
+  <button type="submit" class="btn btn-lg btn-primary m-auto" [disabled]="bansForm.invalid">Submit</button>
+</div>
+<app-loader *ngIf="loading"></app-loader>

@@ -1,10 +1,12 @@
-<span *ngIf="loading && !errorLoadCards">Loading...</span>
+<app-loader *ngIf="loading && !errorLoadCards">Loading...</app-loader>
 <span class="error" *ngIf="errorLoadCards">Failed to load resources</span>
 <div class="conteinter">
   <div *ngIf="!loading && !errorLoadCards" class="form-group">
     <label for="deck">Decode deckstring</label>
-    <textarea class="form-control " id="deck" placeholder="Enter deckstring" [(ngModel)]="deckString"></textarea>
-    <button  type="button" class="btn btn-primary mb-2" (click)="checkString()">Decode</button>
+    <div class="d-flex align-items-center justify-content-between">
+      <textarea class="form-control " id="deck" placeholder="Enter deckstring" [(ngModel)]="deckString"></textarea>
+      <button  type="button" class="btn btn-primary mb-2" (click)="checkString()">Decode</button>
+    </div>
   </div>
   <div *ngIf="deckToPresent">
     <div class="card bg-light mb-3">
