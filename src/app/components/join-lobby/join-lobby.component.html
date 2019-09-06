@@ -1,1 +1,7 @@
-<p>join-lobby works!</p>
+<ng-container *ngIf="!loading">
+  <app-nick (savebtag)="updateNick($event)" *ngIf="lobby.status === 'pending'"></app-nick>
+  <app-picks *ngIf="lobby.status === 'picks'" [lobby]="lobby" (pickEvent)="picksPhase($event)"></app-picks>
+  <app-bans *ngIf = "lobby.status === 'bans'" [btag]="btag" [lobby]="lobby" (bansEvent)="banPhase($event)"></app-bans>
+  <app-summary *ngIf = "lobby.status === 'summary'" [lobby]="lobby"></app-summary>
+</ng-container>
+<app-loader *ngIf="loading"></app-loader>

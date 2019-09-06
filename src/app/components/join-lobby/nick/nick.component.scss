@@ -1,0 +1,16 @@
+.b-tag-form{
+  margin-top: 3vh !important;
+  max-width: 50%;
+  .form-group-1{
+    display: flex;
+    justify-content: space-between;
+    input{
+      display: inline-block;
+      width:75%;
+    }
+    button{
+      width:20%;
+      display:inline-block;
+    }
+  }
+}

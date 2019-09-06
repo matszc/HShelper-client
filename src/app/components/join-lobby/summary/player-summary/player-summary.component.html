@@ -1,0 +1,13 @@
+<h4>{{player.btag}}</h4>
+<h6>Picks</h6>
+<div class="icon-set">
+  <div class="icon" *ngFor="let pick of picksToShow">
+    <img [alt]="pick.name" [src]=pick.url />
+  </div>
+</div>
+<h6>Banned</h6>
+<div class="icon-set">
+  <div class="icon ban" *ngFor="let ban of bansToShow">
+    <img [alt]="ban.name" [src]=ban.url />
+  </div>
+</div>

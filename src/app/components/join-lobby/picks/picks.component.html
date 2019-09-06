@@ -1,0 +1,7 @@
+<form class="picks-wrapper row" [formGroup]="picksForm" (ngSubmit)="onSubmit()" (change)="checkForm()">
+  <div *ngFor="let hero of heroes" class="col-md-4 hero">
+    <app-hero-input [heroToDisplay]="hero" [parentForm]="picksForm"></app-hero-input>
+  </div>
+  <button type="submit" class="btn btn-lg btn-primary m-auto" [disabled]="picksForm.invalid">Submit</button>
+</form>
+<app-loader *ngIf="loader"></app-loader>

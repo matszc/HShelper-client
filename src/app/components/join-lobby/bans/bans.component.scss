@@ -1,0 +1,12 @@
+.picks-wrapper{
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  padding: 7vw;
+  .hero {
+    padding: 15px;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+}

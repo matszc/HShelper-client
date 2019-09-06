@@ -1,0 +1,5 @@
+<div class="d-flex justify-content-between wrapper">
+  <ng-container *ngFor="let player of lobby.players">
+    <app-player-summary [player]="player"></app-player-summary>
+  </ng-container>
+</div>

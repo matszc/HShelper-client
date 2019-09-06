@@ -1,0 +1,10 @@
+<div class="m-auto b-tag-form">
+  <div *ngIf="!isBtagSet" class="form-group">
+    <input type="text" class="form-control" id="btag" (keypress)="checkIfEnterPressed($event)" placeholder="Enter your battle tag" [(ngModel)]="btag" >
+    <button type="submit" class="btn btn-primary" (click)="saveBtag()">Save</button>
+  </div>
+  <div *ngIf="isBtagSet" class="text-center btag">
+    <h2>Hello, {{btag}}</h2>
+    <small (click)="clearBtag()">Click to change your battletag</small>
+  </div>
+</div>

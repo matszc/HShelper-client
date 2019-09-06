@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { decode, FormatType, DeckDefinition } from 'deckstrings';
-import {HttpClient} from '@angular/common/http';
-import {GLOBAL} from '../../config';
+import { decode, DeckDefinition } from 'deckstrings';
+import {CardsService} from '../../services/cards.service';
 
 @Component({
   selector: 'app-decode',
@@ -16,14 +15,14 @@ export class DecodeComponent implements OnInit {
   public errorDuringDecoding: boolean;
   public deckToPresent;
 
-  constructor(private http: HttpClient) {
+  constructor(private cardsService: CardsService) {
     this.loading = true;
     this.errorLoadCards = false;
     this.errorDuringDecoding = false;
   }
 
   ngOnInit() {
-    this.http.get<Array<any>>(`${GLOBAL.URL}/cards`).subscribe(res => {
+    this.cardsService.getCards().subscribe(res => {
       this.cards = [...res];
       this.loading = false;
     }, () => this.errorLoadCards = true);
@@ -57,7 +56,7 @@ export class DecodeComponent implements OnInit {
       });
       this.deckToPresent = {
         hero: hero.cardClass,
-        cards: cards
+        card: cards
       };
     }
   }
